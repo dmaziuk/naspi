@@ -48,3 +48,11 @@ These are the result of a prolonged fight with the idiocy that passes for init i
     * The default setup allows for root and boot on ZFS, for which ZFS has to be available early in the boot process, which we can't do because USB. We have to remove a couple *Before* dependencies from `zfs-mount script` to break that.
     * `zfs-import` scripts: add dependencies on the USB drives being up. It should probably work with dependencies on `dev-sd?.device`, I ended up with teh `sd?-up` "services" instead.
 
+### zpool
+
+With 4 SATA ports, the "bang per buck" option is a `raidz1` on 3 spinning rust drives and an SSD (smallest you can find) for caches. You won't have a 2nd SSD to mirror `SLOG`, but I'm not entirely sure how critical that is nowadays, especially on lightly used home NAS.
+
+### pics or it didn't happen
+
+breadboard build: `bbb1.jpg` and `bbb2.jpg`
+
