@@ -19,7 +19,7 @@ This is the option 3 build.
 Go for option 1 or wait for a Pi with accessible PCIe bus: it's too obviously useful to keep locked down, so it's likely that Raspberry Pi Foundation will soon release one.
 
   * With USB to SATA HAT your drives show up as USB mass storage devices. Those are detected and spun up fairly late in the boot sequence, ZFS pool can't be imported when OS startup scripts expect. This also means you can't use these for e.g. swap as they're not available when swap is mounted, and so on. None of that should be happening with a proper SATA controller. 
-  * Radxa's HAT is not a pure USB device, it needs a few GPIO pins connected to be properly recognized by the OS. It also needs Radxa software that works on both kinds of Unix: debian and ubuntu(*). A supported SATA controller may even work on BSD where ZFS is a first-class citizen.
+  * Radxa's HAT is not a pure USB device, it needs a few GPIO pins connected to be properly recognized by the OS. It also needs Radxa software that works on both kinds of Unix: debian and ubuntu(*). A supported SATA controller, OTOH, may even work on BSD where ZFS is a first-class citizen.
   * Radxa's HAT is optimised for their own NAS product and not for DIY use. That causes some minor headaches, like not much room for the CPU fan when stacked (nor place to plug it in), or the need for SATA gender benders or M-F data cables (the HAT works as a backplane for 4x2.5" drive and has the "backplane" connectors).
 
 *)https://www.youtube.com/watch?v=vS-zEH8YmiM
