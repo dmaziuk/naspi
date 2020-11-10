@@ -10,7 +10,7 @@ Option 1 for adding SATA ports to the Pi is to do the above and find a SATA cont
 
 Option 2: Radxa: https://wiki.radxa.com makes a Pi clone with PCIe bus (apparently) exposed, and a 5-port SATA HAT for it.
 
-Option 3: Radxa also makes a HAT for Pi 4: https://wiki.radxa.com/Dual_Quad_SATA_HAT -- this one hooks the 2 USB 3.1 to a pair of JMicron port mulripliers turning htem into 4 SATA ports. It has the obvious downside, the flip side is no soldering required and how much performance do you really need in a home NAS.
+Option 3: Radxa also makes a HAT for Pi 4: https://wiki.radxa.com/Dual_Quad_SATA_HAT -- this one hooks the Pi's 2 USB 3.1 ports to a pair of JMicron port mulripliers turning htem into 4 SATA ports. It has the obvious downside, the flip side is no soldering required and how much performance do you really need in a home NAS.
 
 This is the option 3 build.
 
