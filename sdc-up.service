@@ -1,0 +1,9 @@
+[Unit]
+Description=Dummy unit
+Requires=systemd-udev-settle.service rockpi-sata.service dev-sdc.device
+After=systemd-udev-settle.service rockpi-sata.service dev-sdc.device
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/fdisk -l /dev/sdc
+RemainAfterExit=yes
