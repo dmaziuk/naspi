@@ -26,13 +26,13 @@ Go for option 1 or wait for a Pi with accessible PCIe bus: it's too obviously us
 
 ## parts
 
-  * Pi 4. I have the 4GB version but ZFS will use all the RAM it can get to, so... more RAM is better.
+  * Pi 4. I have the 4GB version but ZFS will use all the RAM it can get to, so... more is better.
   * Radxa dual-quad SATA HAT: https://wiki.radxa.com/Dual_Quad_SATA_HAT.
   * PicoPSU-80: https://www.amazon.com/gp/product/B005TWE5E6/ and an 80+W 12V PSU for it. 
   * According to Radxa you can power the whole thing through the HAT but I have the HDDs on the SATA power cable: https://www.amazon.com/gp/product/B0086OGN9E and the HAT and Pi on the 4-pin molex HDD to floppy cable.
   * 4x SATA gender benders: https://www.amazon.com/gp/product/B00S6HTVGI/ or M-F SATA data cables (keep in mind that the ones with sides sticking out will need to be filed down), or the 7+15 M-F cables (and power the disks through the HAT).
   * For the breadboard build I used a 4-disc caddy from my junk pile, for the final version I'm considering the IcyDock MB074SP-1B with hot-swap backplane.
-  * I might get the ATX HAT for the final product if it looks like I can get it to play with the Radxa HAT: https://www.tindie.com/products/tomtibbetts/mini-atx-psu-cool-kit-for-raspberry-pi/
+  * I might get the ATX HAT for the final product if it looks like I can get it to play ce with the Radxa HAT: https://www.tindie.com/products/tomtibbetts/mini-atx-psu-cool-kit-for-raspberry-pi/
 
 ## software and setup
 
@@ -42,15 +42,15 @@ OS: ubuntu-20.04.1 server. I would much prefer Alpine but as of the time of this
 
 These are the result of a prolonged fight with the idiocy that passes for init in mainstream linux distros these days. I might trim them down at some point, but as-is, they work (for me).
 
-  * `20-usbhd.rules` goes into `/etc/udev/rules.d` and handles "plugging in" the drives. Run `udevadm info --attribute-walk --path=$(udevadm info --query=path --name=/dev/sda)` for each drive and adjust `ATTRS` as needed.
+  * `20-usbhd.rules` goes into `/etc/udev/rules.d` and handles "plugging in" the drives. Run `udevadm info --attribute-walk --path=$(udevadm info --query=path --name=/dev/sda)` for each drive and adjust `ATTRS` to taste.
   * `sd?-up.service` are custom "services" started by the above `udev` rules. It doesn't really matter what they do, they provide dependencies for `zfs-import`.
   * `zfs-*.service` go into `/etc/systemd/system` (`systemctl edit --full`) to completely override the stock service files. 
-    * The default setup allows for root and boot on ZFS, for which ZFS has to be available early in the boot process, which we can't do because USB. We have to remove a couple *Before* dependencies from `zfs-mount script` to break that.
-    * `zfs-import` scripts: add dependencies on the USB drives being up. It should probably work with dependencies on `dev-sd?.device`, I ended up with teh `sd?-up` "services" instead.
+    * The default setup allows for root and boot on ZFS, for which ZFS has to be available early in the boot process, which we can't do because USB. We have to remove a couple `Before` dependencies from `zfs-mount` script to break that.
+    * `zfs-import` scripts: add dependencies on the USB drives being up. It should probably work with dependencies on `dev-sd?.device`, I ended up with the `sd?-up` "services" instead (but may revisit that sometime).
 
 ### zpool
 
-With 4 SATA ports, the "bang per buck" option is a `raidz1` on 3 spinning rust drives and an SSD (smallest you can find) for caches. You won't have a 2nd SSD to mirror `SLOG`, but I'm not entirely sure how critical that is nowadays, especially on lightly used home NAS.
+With 4 SATA ports, the "bang per buck" option is a `raidz1` on 3 spinning rust drives and a smallest SSD you can find for caches. You won't have a 2nd SSD to mirror `SLOG`, but I'm not entirely sure how critical that is nowadays, especially on lightly used home NAS.
 
 ### pics or it didn't happen
 
