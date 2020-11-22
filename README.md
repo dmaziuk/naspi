@@ -10,7 +10,7 @@ Option 1 for adding SATA ports to the Pi is to do the above and find a SATA cont
 
 Option 2: Radxa: https://wiki.radxa.com makes a Pi clone with PCIe bus (apparently) exposed, and a 5-port SATA HAT for it.
 
-Option 3: Radxa also makes a HAT for Pi 4: https://wiki.radxa.com/Dual_Quad_SATA_HAT -- this one hooks the Pi's 2 USB 3.1 ports to a pair of JMicron port mulripliers turning htem into 4 SATA ports. It has the obvious downside, the flip side is no soldering required and how much performance do you really need in a home NAS.
+Option 3: Radxa also makes a HAT for Pi 4: https://wiki.radxa.com/Dual_Quad_SATA_HAT -- this one hooks the Pi's 2 USB 3.1 ports to a pair of JMicron port mulripliers turning them into 4 SATA ports. It has the obvious downside, the flip side is no soldering required and how much performance do you really need in a home NAS.
 
 This is the option 3 build.
 
@@ -20,7 +20,7 @@ Go for option 1 or wait for a Pi with accessible PCIe bus: it's too obviously us
 
   * With USB to SATA HAT your drives show up as USB mass storage devices. Those are detected and spun up fairly late in the boot sequence, ZFS pool can't be imported when OS startup scripts expect. This also means you can't use these for e.g. swap as they're not available when swap is mounted, and so on. None of that should be happening with a proper SATA controller. 
   * Radxa's HAT is not a pure USB device, it needs a few GPIO pins connected to be properly recognized by the OS. It also needs Radxa software that works on both kinds of Unix: debian and ubuntu(*). A supported SATA controller, OTOH, may even work on BSD where ZFS is a first-class citizen.
-  * Radxa's HAT is optimised for their own NAS product and not for DIY use. That causes some minor headaches, like not much room for the CPU fan when stacked (nor place to plug it in), or the need for SATA gender benders or M-F data cables (the HAT works as a backplane for 4x2.5" drives and has the "backplane" connectors).
+  * Radxa's HAT is optimised for their own NAS product and not for DIY use. That causes some minor headaches, like not much room for the CPU fan when stacked (nor place to plug it in), or the need for SATA gender benders or M-F data cables (the HAT works as a backplane for 4x2.5" drives in Radxa NAS and so has the "backplane" connectors).
 
 *)https://www.youtube.com/watch?v=vS-zEH8YmiM
 
@@ -32,7 +32,7 @@ Go for option 1 or wait for a Pi with accessible PCIe bus: it's too obviously us
   * According to Radxa you can power the whole thing through the HAT but I have the HDDs on the SATA power cable: https://www.amazon.com/gp/product/B0086OGN9E and the HAT and Pi on the 4-pin molex HDD to floppy cable.
   * 4x SATA gender benders: https://www.amazon.com/gp/product/B00S6HTVGI/ or M-F SATA data cables (keep in mind that the ones with sides sticking out will need to be filed down), or the 7+15 M-F cables (and power the disks through the HAT).
   * For the breadboard build I used a 4-disc caddy from my junk pile, for the final version I'm considering the IcyDock MB074SP-1B with hot-swap backplane.
-  * I might get the ATX HAT for the final product if it looks like I can get it to play ce with the Radxa HAT: https://www.tindie.com/products/tomtibbetts/mini-atx-psu-cool-kit-for-raspberry-pi/
+  * I might get the ATX HAT for the final product if it looks like I can get it to play nice with the Radxa HAT: https://www.tindie.com/products/tomtibbetts/mini-atx-psu-cool-kit-for-raspberry-pi/
 
 ## software and setup
 
