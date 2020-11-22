@@ -14,7 +14,7 @@ Option 3: Radxa also makes a HAT for Pi 4: https://wiki.radxa.com/Dual_Quad_SATA
 
 This is the option 3 build.
 
-*) PCIex1 is rated to 2.5Gbps one-way, same as half of the USB 3.1's 5Gbps each disk would be getting over the port multiplier (best case scenario), which makes the whole performance thing is somewhat academic. There are more practical problems with this setup thout, see below.
+*) PCIex1 is rated to 2.5Gbps one-way, same as half of the USB 3.1's 5Gbps each disk would be getting over the port multiplier (best case scenario), which makes the whole performance thing somewhat academic. For the more practical problems, see below.
 
 ## lessons learned
 
