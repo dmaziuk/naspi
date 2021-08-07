@@ -1,9 +1,0 @@
-#
-# udevadm info --attribute-walk --path=$(udevadm info --query=path --name=/dev/sda)
-#
-# sd[a-d]
-
-ACTION=="add",KERNEL=="sda",SUBSYSTEM=="block",SUBSYSTEMS=="usb",ATTRS{devpath}=="2",ATTRS{idVendor}=="152d",ATTRS{manufacturer}=="JMicron",ATTRS{idProduct}=="0561",TAG+="systemd",ENV{SYSTEMD_WANTS}+="sda-up.service"
-ACTION=="add",KERNEL=="sdb",SUBSYSTEM=="block",SUBSYSTEMS=="usb",ATTRS{devpath}=="2",ATTRS{idVendor}=="152d",ATTRS{manufacturer}=="JMicron",ATTRS{idProduct}=="0561",TAG+="systemd",ENV{SYSTEMD_WANTS}+="sdb-up.service"
-ACTION=="add",KERNEL=="sdc",SUBSYSTEM=="block",SUBSYSTEMS=="usb",ATTRS{devpath}=="1",ATTRS{manufacturer}=="JMicron",ATTRS{idProduct}=="0561",ATTRS{idVendor}=="152d",TAG+="systemd",ENV{SYSTEMD_WANTS}+="sdc-up.service"
-ACTION=="add",KERNEL=="sdd",SUBSYSTEM=="block",SUBSYSTEMS=="usb",ATTRS{idVendor}=="152d",ATTRS{devpath}=="1",ATTRS{manufacturer}=="JMicron",ATTRS{idProduct}=="0561",TAG+="systemd",ENV{SYSTEMD_WANTS}+="sdd-up.service"
