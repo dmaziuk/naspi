@@ -1,5 +1,7 @@
 # raspberry pi zfs nas
 
+## I somehow fried the PicoPSU and it took the HAT with it. While I was waiting for Radxa to bake a new batch of these HATs, CM4 came out, so the next iteration is using that.
+
 breadboard build
 
 ## background
