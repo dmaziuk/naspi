@@ -27,10 +27,13 @@ on lightly used home NAS. Hence 4-port SATA controller and 4-port disk cage.
 
 OS: ubuntu-20.04 LTS server (64-bit ARM). I plan to switch to Alpine someday but I'll have to figure out their kernel-building setup (or wait till they build one w/ all the required modules),
 in the meantime Ubuntu kernel recognizes the Marvel chip out of the box and may have the SATA modules in one of the "universe" packages. I built my own anyway, 
-use e.g. https://askubuntu.com/questions/1238261/customizing-the-kernel-arm64-using-ubuntu-20-04-lts-on-a-raspberry-pi-4#1242267 as a reference if not familiar with debian/ubuntu kernel build system.
+use e.g. https://askubuntu.com/questions/1238261/customizing-the-kernel-arm64-using-ubuntu-20-04-lts-on-a-raspberry-pi-4#1242267 as a reference if not familiar 
+with debian/rules.
 
-Then `sudo apt install zfsutils-linux`
+Before build, edit `debian.raspi/config/config.common.ubuntu` and set `CONFIG_SATA_AHCI=m`. This will turn on some other option that's hiding in the maze
+of config files, just start the build and wait for it to pop up and hit enter.
 
+After installing the kernel, `sudo apt install zfsutils-linux` and reboot.
 
 ### pics or it didn't happen
 
